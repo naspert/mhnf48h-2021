@@ -129,6 +129,6 @@ django_heroku.settings(locals())
 try:
     from app.settingsLocal import *
 except ImportError:
-    raise
+    pass
 
 
