@@ -11,6 +11,11 @@
                 <h3 class="card-title">Observations</h3>
             </div>
             <div class="card-body">
+                <a href="{% url 'field:observ_create' %}" class="btn btn-primary float-right" type="button" id="create-obs">
+                    <i class="fas fa-plus"></i>
+                    Add new
+                </a>
+    
                 {% if observations %}
                     {% include 'field/_obs_table.html' %}
                 {% else %}
