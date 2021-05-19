@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% block content %}
+<form method="post" action="">
+    {% csrf_token %}
+    <div class="card">
+        <div class="card-header">
+            Delete observation
+        </div>
+        <div class="card-body">
+            <div class="alert alert-danger">
+                Are you sure you want to delete ?
+            </div>
+        </div>
+    </div>
+    <span class="float-right">
+        <a href="{{ view.get_success_url }}" class=" btn btn-info">
+            <i class="fas fa-arrow-left"></i>
+            Cancel
+        </a>
+        <button type="submit" id="delete-btn" class="btn btn-danger">Delete</button>
+    </span>
+</form>
+
+{% endblock %}

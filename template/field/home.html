@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+{% block custom_styles %}
+<link rel="stylesheet" href="https://cdn.datatables.net/1.10.24/css/dataTables.bootstrap4.min.css">
+{% endblock %}
+
+{% block content %}
+<div class="row">
+    <div class="col-lg-12">
+        <div class="card">
+            <div class="card-header">
+                <h3 class="card-title">Observations</h3>
+            </div>
+            <div class="card-body">
+                {% if observations %}
+                    {% include 'field/_obs_table.html' %}
+                {% else %}
+                    <p class="text-primary">No observations found for current user.</p>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script src="https://cdn.datatables.net/1.10.24/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.24/js/dataTables.bootstrap4.min.js"></script>
+<script type="text/jaavscript">
+    $(document).ready(function {
+        $('#obs-table').DataTable({
+            responsive: true, columns: [ null, null, {orderable: false }, {orderable: false }]
+        });
+    });
+</script>
+{% endblock %}

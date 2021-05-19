@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+  <form action="" method="post">
+    {% csrf_token %}
+    {{ form|crispy }}
+    <span class="float-right">
+      <a href="{{ view.get_success_url }}" class=" btn btn-info">
+          <i class="fas fa-arrow-left"></i>
+          Cancel
+      </a>
+      <button type="submit" class="submit-btn btn btn-primary"><i class="fas fa-save"></i></button>
+  </span>
+
+  </form>
+{% endblock %}
