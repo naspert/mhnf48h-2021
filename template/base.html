@@ -21,14 +21,14 @@
 
 <div class="container-fluid">
     <div class="row">
-        <div class="col-2">
+        <div class="col-sm-2">
             <img src="{% static 'bulle_pleine_noir_0.webp'%}">
         </div>
         <div class="col-9">
             <h1>48h de la biodiversité - Fribourg</h1>
             <h5>27 et 28 mai 2021</h5>
         </div>
-        <div class="col-1">
+        <div class="col-sm-1">
             {% if user.is_authenticated %}
             <a href="{% url 'logout' %}">Logout</a>
             {% endif %}
