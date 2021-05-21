@@ -4,3 +4,4 @@ whitenoise
 gunicorn
 django-crispy-forms
 django-select2
+sentry-sdk
