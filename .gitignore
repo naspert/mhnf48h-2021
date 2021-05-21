@@ -62,3 +62,4 @@ app/settingsLocal.py
 
 .env
 db.sqlite3
+.DS_Store

@@ -10,3 +10,5 @@ class Observation(models.Model):
     last_modified_date = models.DateTimeField(default=timezone.now)
     remarks = models.TextField(default='', blank=True)
     
+    def __str__(self):
+        return self.species

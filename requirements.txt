@@ -3,3 +3,4 @@ django-heroku
 whitenoise
 gunicorn
 django-crispy-forms
+django-select2

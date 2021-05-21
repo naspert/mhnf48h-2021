@@ -21,5 +21,6 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('accounts/', include('django.contrib.auth.urls')),
     path('field/', include('field.urls')),
-    path('', RedirectView.as_view(url='field/', permanent=True))
+    path('', RedirectView.as_view(url='field/', permanent=True)),
+    path("select2/", include("django_select2.urls")),
 ]

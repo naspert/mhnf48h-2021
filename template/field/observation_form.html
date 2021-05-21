@@ -1,6 +1,10 @@
 {% extends "base.html" %}
 {% load crispy_forms_tags %}
 
+{% block custom_style %}
+{{ form.media.css }}
+{% endblock %}
+
 {% block content %}
   <form action="" method="post">
     {% csrf_token %}
@@ -14,4 +18,44 @@
   </span>
 
   </form>
+{% endblock %}
+{% block scripts %}
+{{ form.media.js }}
+<script type="text/javascript">
+  $(document).ready(function() {
+    $('#id_species').djangoSelect2({
+      minimumInputLength: 3,
+      multiple: false,
+      tags: true,
+      createTag: function (tag) {
+        return {id: tag.term, text: tag.term, tag: true};
+      },
+      ajax: {
+        url: "https://api.inaturalist.org/v1/taxa/autocomplete",
+        dataType: 'json',
+        delay: 250,
+        data: function (params) {
+          return {
+            q: params.term, // search term
+            is_active: true,
+            per_page: 30
+          };
+        },
+        processResults: function (data, params) {
+          // parse the results into the format expected by Select2
+          params.page = params.page || 1;
+
+          return {
+            results: data.results.map(function (x) {
+              return {id: x.name, text: x.matched_term + ' (' + x.name + ')'}
+            }),
+            pagination: {
+              more: false
+            }
+          };
+        }
+      }
+    });
+  });
+</script>
 {% endblock %}
