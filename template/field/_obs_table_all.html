@@ -1,0 +1,24 @@
+<div class="dataTable_wrapper">
+    <table id="obs-table" class="table table-sm table-bordered table-striped table-hover">
+        <thead>
+            <tr>
+                <th class="text-center" scope="col">#</th>
+                <th class="text-center" scope="col">User</th>
+                <th class="text-center" scope="col">Species</th>
+                <th class="text-center" scope="col">Remarks</th>
+                <th class="text-center" scope="col">Date</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for obs in observations %}
+            <tr>
+                <th class="text-center" scope="row">{{ forloop.counter }}</th>
+                <td class="text-center">{{ obs.owner }}</td>
+                <td class="text-center">{{ obs.species }}</td>
+                <td class="text-center">{{ obs.remarks }}</td>
+                <td class="text-center">{{ obs.created_date }}</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+</div>

@@ -8,26 +8,25 @@
     <div class="col-lg-12">
         <div class="card">
             <div class="card-header">
-                <h3 class="card-title">My observations</h3>
+                <h3 class="card-title">All observations</h3>
                 <ul class="nav nav-pills">
                     <li class="nav-item">
-                      <a class="nav-link active" href="{% url 'field:home' %}"><i class="fas fa-user"></i></a>
+                      <a class="nav-link" href="{% url 'field:home' %}"><i class="fas fa-user"></i></a>
                     </li>
                     <li class="nav-item">
-                      <a class="nav-link" href="{% url 'field:show_all' %}"><i class="fas fa-users"></i></a>
+                      <a class="nav-link active" href="{% url 'field:show_all' %}"><i class="fas fa-users"></i></a>
                     </li>
                   </ul>
             </div>
             <div class="card-body">
-                <a href="{% url 'field:observ_create' %}" class="btn btn-primary float-right" type="button" id="create-obs">
-                    <i class="fas fa-plus"></i>
-                    Add new
+                <a href="{% url 'field:csv_export_all' %}" class="btn btn-primary float-right" type="button" id="download-csv">
+                    <i class="fas fa-file-csv"></i>
+                    Download
                 </a>
-    
                 {% if observations %}
-                    {% include 'field/_obs_table.html' %}
+                    {% include 'field/_obs_table_all.html' %}
                 {% else %}
-                    <p class="text-primary">No observations found for current user.</p>
+                    <p class="text-primary">No observations found.</p>
                 {% endif %}
             </div>
         </div>
@@ -41,7 +40,7 @@
 <script type="text/javascript">
     $(document).ready(function() {
         $('#obs-table').DataTable({
-            responsive: true, columns: [ null, null, {orderable: false }, {orderable: false }, {orderable: false }]
+            responsive: true, columns: [ null, null, null, {orderable: false }, null]
         });
     });
 </script>
