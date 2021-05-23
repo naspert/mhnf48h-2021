@@ -4,6 +4,7 @@
             <tr>
                 <th class="text-center" scope="col">#</th>
                 <th class="text-center" scope="col">Species</th>
+                <th class="text-center" scope="col">Alt. name</th>
                 <th class="text-center" scope="col">Remarks</th>
                 <th class="text-center" scope="col">Date</th>
                 <th class="text-center" scope="col">&nbsp;</th>
@@ -14,6 +15,7 @@
             <tr>
                 <th class="text-center" scope="row">{{ forloop.counter }}</th>
                 <td class="text-center">{{ obs.species }}</td>
+                <td class="text-center">{{ obs.search_term }}</td>
                 <td class="text-center">{{ obs.remarks }}</td>
                 <td class="text-center">{{ obs.created_date }}</td>
                 <td class="text-center">

@@ -1,5 +1,5 @@
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
-from django.forms import ModelForm
+from django.forms import ModelForm, HiddenInput
 from django.core.exceptions import PermissionDenied
 from django.utils.decorators import method_decorator
 from django.contrib.auth.decorators import login_required
@@ -12,9 +12,11 @@ from django_select2 import forms as s2forms
 class ObservationForm(ModelForm):
     class Meta:
         model = Observation
-        fields = ['species', 'remarks']
+        fields = ['species', 'remarks', 'search_term', 'preferred_name']
         widgets = {
-            "species": s2forms.Select2Widget
+            'species': s2forms.Select2Widget,
+            'search_term': HiddenInput,
+            'preferred_name': HiddenInput
         }
 
 @method_decorator(login_required, name='dispatch')

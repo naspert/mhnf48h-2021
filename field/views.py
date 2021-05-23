@@ -22,7 +22,7 @@ def show_all(request):
 @method_decorator(login_required, name='get')
 class ObservationExportView(CSVExportView):
     model = Observation
-    fields = ('owner__username', 'species', 'remarks', 'created_date', 'last_modified_date')
+    fields = ('owner__username', 'species', 'search_term', 'preferred_name', 'remarks', 'created_date', 'last_modified_date')
 
 
 
