@@ -9,7 +9,7 @@ SECRET_KEY = "{{ pillar_dict['django_secret_key'] }}"
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-STATICFILES_STORAGE = 'django.contrib.staticfiles.storage.staticfiles_storage'
+STATICFILES_STORAGE = 'django.contrib.staticfiles.storage.StaticFilesStorage'
 # Database
 
 
