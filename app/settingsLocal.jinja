@@ -1,0 +1,35 @@
+{% set pillar_dict = pillar['arcanite_gestion']['custom']['mhnf48h'] %}
+
+
+# SECURITY WARNING: keep the secret key used in production secret!
+SECRET_KEY = "{{ pillar_dict['django_secret_key'] }}"
+
+# SECURITY WARNING: don't run with debug turned on in production!
+DEBUG = False
+
+# Database
+
+
+DATABASES = {
+    "default": {
+        "ENGINE": "django.db.backends.postgresql_psycopg2",
+        "HOST": "{{ pillar_dict['db_host'] }}",
+        "NAME": "{{ pillar_dict['db_name'] }}",
+        "USER": "{{ pillar_dict['db_user'] }}",
+        "PASSWORD": "{{ pillar_dict['db_password'] }}"
+    }
+}
+
+sentry_sdk.init(
+        dsn={{ pillar_dict['sentry_dsn'] }},
+        integrations=[DjangoIntegration()],
+
+        # Set traces_sample_rate to 1.0 to capture 100%
+        # of transactions for performance monitoring.
+        # We recommend adjusting this value in production.
+        traces_sample_rate=0.3,
+
+        # If you wish to associate users to errors (assuming you are using
+        # django.contrib.auth) you may enable sending PII data.
+        send_default_pii=False
+    )

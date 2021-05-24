@@ -1,1 +1,8 @@
 django<3.0
+django-heroku
+whitenoise
+gunicorn
+django-crispy-forms
+django-select2
+django-csv-export-view
+sentry-sdk
