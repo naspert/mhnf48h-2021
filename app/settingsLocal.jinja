@@ -21,7 +21,7 @@ DATABASES = {
 }
 
 sentry_sdk.init(
-        dsn={{ pillar_dict['sentry_dsn'] }},
+        dsn="{{ pillar_dict['sentry_dsn'] }}",
         integrations=[DjangoIntegration()],
 
         # Set traces_sample_rate to 1.0 to capture 100%
