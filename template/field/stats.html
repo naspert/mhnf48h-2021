@@ -1,0 +1,54 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="row">
+    <div class="col-lg-12">
+        <div class="card">
+            <div class="card-header">
+                <h3 class="card-title">Stats</h3>
+            </div>
+            <div class="card-body">
+                <div id='obs-user-plot'></div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+<script type="text/javascript">
+let stats = {
+  type: 'bar',
+  orientation: 'h',
+  y: [
+    {% for o in observations %}
+        "{{ o.username}}",
+    {% endfor %}
+    ],
+  x: [
+  {% for o in observations %}
+        {{ o.num_obs}},
+    {% endfor %}
+  ],
+  marker: {
+      color: '#A2C8A2',
+      line: {
+          width: 2.5
+      }
+  }
+};
+
+let data = [ stats ];
+
+let layout = { 
+  title: 'Observations per user',
+  font: {size: 14}
+};
+
+let config = {responsive: true, displayModeBar: false}
+
+Plotly.newPlot('obs-user-plot', data, layout, config );
+
+</script>
+{% endblock %}
